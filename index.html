@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monode Swap | Monad Blockchain DEX</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h1>Monode Swap</h1>
+            </div>
+            
+            <div class="header-actions">
+                <button id="connectWallet" class="btn connect-btn">
+                    <i class="fas fa-wallet"></i> Connect Wallet
+                </button>
+                <div class="user-profile">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="hero">
+            <h2>Swap Tokens on Monad</h2>
+            <p>Experience lightning-fast swaps with the most beautiful pink-purple themed DEX on the Monad blockchain</p>
+        </div>
+
+        <!-- Swap Card -->
+        <div class="swap-card glass-card">
+            <div class="swap-header">
+                <h3>Swap</h3>
+                <div class="swap-actions">
+                    <button class="icon-btn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fas fa-history"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- From Token -->
+            <div class="token-input">
+                <div class="token-label">
+                    <span>From</span>
+                    <span>Balance: <span id="fromBalance">0.0</span></span>
+                </div>
+                <div class="token-control">
+                    <input type="number" id="fromAmount" placeholder="0.0" value="1.0">
+                    <button class="token-selector" id="fromTokenSelector">
+                        <div class="token-icon">
+                            <i class="fab fa-ethereum"></i>
+                        </div>
+                        <span>ETH</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Swap Icon -->
+            <div class="swap-icon-container">
+                <button class="swap-icon" id="swapTokens">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+
+            <!-- To Token -->
+            <div class="token-input">
+                <div class="token-label">
+                    <span>To</span>
+                    <span>Balance: <span id="toBalance">0.0</span></span>
+                </div>
+                <div class="token-control">
+                    <input type="number" id="toAmount" placeholder="0.0" value="1850.25" readonly>
+                    <button class="token-selector" id="toTokenSelector">
+                        <div class="token-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <span>USDC</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Swap Details -->
+            <div class="swap-details">
+                <div class="detail-row">
+                    <span>Price</span>
+                    <span>1 ETH = 1850.25 USDC</span>
+                </div>
+                <div class="detail-row">
+                    <span>Minimum received</span>
+                    <span>1840.99 USDC</span>
+                </div>
+                <div class="detail-row">
+                    <span>Price Impact</span>
+                    <span class="positive">0.15%</span>
+                </div>
+                <div class="detail-row">
+                    <span>Network Fee</span>
+                    <span>~$0.42</span>
+                </div>
+            </div>
+
+            <!-- Swap Button -->
+            <button id="swapButton" class="btn swap-btn">
+                Swap
+            </button>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <div class="feature-card glass-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h4>Lightning Fast</h4>
+                <p>Monad's high-performance blockchain ensures ultra-fast transactions</p>
+            </div>
+            
+            <div class="feature-card glass-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4>Secure Swaps</h4>
+                <p>Powered by Kuru Router SDK for secure and optimized routing</p>
+            </div>
+            
+            <div class="feature-card glass-card">
+                <div class="feature-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h4>Beautiful Design</h4>
+                <p>Unique pink-purple theme that stands out in the DeFi space</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+            <p>© 2023 Monode Swap. All rights reserved. Built on Monad Blockchain.</p>
+            <p class="powered-by">Powered by Kuru Router SDK</p>
+        </div>
+    </footer>
+
+    <!-- Token Selection Modal -->
+    <div id="tokenModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Token</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="tokenSearch" placeholder="Search token name or paste address">
+                <div class="token-list">
+                    <div class="token-item" data-token="ETH">
+                        <div class="token-icon">
+                            <i class="fab fa-ethereum"></i>
+                        </div>
+                        <div class="token-info">
+                            <span class="token-name">Ethereum</span>
+                            <span class="token-symbol">ETH</span>
+                        </div>
+                    </div>
+                    <div class="token-item" data-token="USDC">
+                        <div class="token-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="token-info">
+                            <span class="token-name">USD Coin</span>
+                            <span class="token-symbol">USDC</span>
+                        </div>
+                    </div>
+                    <div class="token-item" data-token="DAI">
+                        <div class="token-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="token-info">
+                            <span class="token-name">Dai Stablecoin</span>
+                            <span class="token-symbol">DAI</span>
+                        </div>
+                    </div>
+                    <div class="token-item" data-token="WBTC">
+                        <div class="token-icon">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="token-info">
+                            <span class="token-name">Wrapped Bitcoin</span>
+                            <span class="token-symbol">WBTC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="https://unpkg.com/@kuru-labs/kuru-sdk@latest/dist/kuru-sdk.umd.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
