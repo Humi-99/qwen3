@@ -1,0 +1,23 @@
+{
+  "name": "monode-swap",
+  "version": "1.0.0",
+  "description": "A pink-purple themed DEX on the Monad blockchain",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "mkdir -p public && cp -r index.html css js contracts README.md public/ && echo 'Build completed successfully'",
+    "deploy": "gh-pages -d public"
+  },
+  "keywords": [
+    "dex",
+    "monad",
+    "kuru",
+    "defi",
+    "swap"
+  ],
+  "author": "Monode Team",
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^4.0.0",
+    "serve": "^14.0.0"
+  }
+}
